@@ -1,0 +1,68 @@
+<html lang="en" ng-app>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+ 
+    
+  </head>
+  <body>
+    <center><h1>القائمة</h1></center>
+    <div ng-controller="toDoCtrl">
+      <div class="content">
+        <div class="header">
+          <form action="">
+            <button type="submit" ng-click="addTodo()">
+              <span class="entypo-list-add"></span>
+            </button>
+          <input type="text" ng-model="todoFld" placeholder="Add todo here!"/>
+          </form>
+          
+          
+        </div>
+        
+        
+        <div class="todoItem" ng-repeat="todo in todos">
+          <span class="{{todo.done}}" contenteditable="true">{{todo.text}}</span>
+          <button ng-click="todos.splice($index, 1)">
+            <span class="entypo-cancel"></span>
+          </button>
+          <button ng-click="doneTodo($index)">
+            <span class="entypo-check"></span>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </body>
+  <script>
+  	function toDoCtrl($scope) {
+  
+  $scope.todoFld = ""
+  
+  $scope.todos = [
+    {
+      text: "", 
+      done:""
+    },{
+      text: "", 
+      done:""
+    }
+  ];
+  
+  $scope.addTodo = function () {
+    
+    if ($scope.todoFld != "") {
+      $scope.todos.push({text: $scope.todoFld , val: $scope.valFld});
+      $scope.todoFld = "";
+    }
+  };
+  
+  $scope.doneTodo = function($index) {
+    $scope.todos[$index].done ="done";
+  };
+  
+}
+  </script>
+</html>
