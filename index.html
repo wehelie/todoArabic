@@ -24,7 +24,7 @@
         
         
         <div class="todoItem" ng-repeat="todo in todos">
-          <span class="{{todo.done}}" contenteditable="true">{{todo.text}}</span>
+          <span class="{{todo.done}}" contenteditable="true"></span>
           <button ng-click="todos.splice($index, 1)">
             <span class="entypo-cancel"></span>
           </button>
